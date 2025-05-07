@@ -12,7 +12,7 @@ func getLoot(_id, _characterID, _battleName):
 
 	var chanceMod:float = 1.0
 
-	if(_id == "junkiestash"):
+	if(_id == "junkieStash"):
 		chanceMod = 0.1
 	elif(_id == "medical"):
 		chanceMod = 1.0
