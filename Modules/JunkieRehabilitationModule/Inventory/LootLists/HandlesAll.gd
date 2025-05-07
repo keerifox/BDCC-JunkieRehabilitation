@@ -20,5 +20,5 @@ func getLoot(_id, _characterID, _battleName):
 		chanceMod = 0.5
 
 	return [
-		[5.0*chanceMod, [["JunkieRehabilitationPill", 1, 1]]],
+		[4.0*chanceMod, [["JunkieRehabilitationPill", 1, 1]]],
 	]
