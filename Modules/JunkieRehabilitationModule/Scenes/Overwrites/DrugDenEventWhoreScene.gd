@@ -119,7 +119,7 @@ func _react(_action: String, _args):
 		startFightWithNPC("DrugDenWhoreAttack")
 		return
 	if(_action == "agree_sex"):
-		runScene("GenericSexScene", [npcID, "pc", SexType.DefaultSex, {bondageDisabled=true}], "prostitutionSex")
+		runScene("GenericSexScene", [npcID, "pc", SexType.DefaultSex, {SexMod.BondageDisabled: true, SexMod.DisableDynamicJoiners: true}], "prostitutionSex")
 		return
 	if(encounter_react(_action, _args)):
 		return
@@ -130,16 +130,9 @@ func _react_scene_end(_tag, _result):
 	._react_scene_end(_tag, _result)
 	
 	if(_tag == "prostitutionSex"):
-		var sexResult:Dictionary = _result[0]
-		var domSatisfaciton:float = sexResult["doms"][npcID]["satisfaction"]
-		
-		var gotUncon:bool = false
-		if(sexResult.has("subs")):
-			var subs:Dictionary = sexResult["subs"]
-			if(subs.has("pc")):
-				var info:Dictionary = subs["pc"]
-				if(info.has("isUnconscious") && info["isUnconscious"]):
-					gotUncon = true
+		var sexResult:SexEngineResult = _result[0]
+		var domSatisfaciton:float = sexResult.getDomSatisfaction(npcID)
+		var gotUncon:bool = sexResult.isSubUnconscious("pc")
 		
 		if(gotUncon):
 			setState("encounter_fully_rekt")
