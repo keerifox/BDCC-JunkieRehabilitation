@@ -8,7 +8,7 @@ func process(character:DynamicCharacter, _args = {}):
 	.pickStats(character, _args) # replace drug den lust/pain/stamina
 
 	var fetishHolder:FetishHolder = character.getFetishHolder()
-	fetishHolder.adjustFetishInterestByTier(Fetish.DrugUse, RNG.randi_range(-6, -4))
+	fetishHolder.addFetish(Fetish.DrugUse, RNG.randf_range(-1.5, -1.0))
 
 	character.npcLootOverride = null # remove drug den loot override
 	character.npcSmallDescription = .pickSmallDescription(character, _args) # replace "One of the junkies"
