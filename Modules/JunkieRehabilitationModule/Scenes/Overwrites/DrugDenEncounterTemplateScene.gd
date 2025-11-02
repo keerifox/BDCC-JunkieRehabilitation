@@ -106,6 +106,7 @@ func encounter_run():
 			"Get your hand- Fshkf..",
 			"How about you shove this up your-",
 			"I will mess you up- mffmfh..",
+			"I will bite your fucking arm off- ffhfmm..",
 		]
 		
 		if(sceneID == "DrugDenEncounterBossScene"):
@@ -118,6 +119,10 @@ func encounter_run():
 			possible.append_array([
 				"So nice of you to share~.",
 				"Oooh new product! Gimme-ahff~",
+				"Mm, you like watching me swallow? Freak~.. mmhf-",
+				"No need to be so.. hhf.. forcefhul.. Let me savor it..",
+				"W- Would you have some milk to help me swallow? P- Please... mffhfm..",
+				"Fuck off-.. W- Wait.. Let me try it..",
 			])
 		
 		saynn("[say=npc]"+RNG.pick(possible)+"[/say]")
@@ -131,6 +136,7 @@ func encounter_run():
 			"Weakened after the fight, {npc.name} falls onto {npc.his} spine, slipping into slumber.",
 			"There is no stamina left in {npc.name} to resist, and {npc.he} {npc.youVerb('collapse')} on {npc.his} side, beside you.",
 			"No more words leave {npc.nameS} mouth. For a brief moment, {npc.he} {npc.youVerb('stare')} at you with an alert expression, then.. {npc.youVerb('doze')} off.",
+			"Lacking strength to defy you, {npc.name} flops on {npc.his} back, closely following your movements for a few seconds, before inevitably falling asleep.",
 		]) )
 
 		saynn("[say=pc]"+RNG.pick([
@@ -142,6 +148,17 @@ func encounter_run():
 			"I hope we meet again.",
 			"Such a hot thing.",
 			"What a charming thing.",
+			"I'd like to know you a little more.. intimately..",
+			"Once I'm done wandering this miserable place, I'll make sure you're taken good care of.",
+			"We've only just met, and I already feel addicted.. Perhaps I'm not the best person to judge you..",
+			"I really don't want to forget you..",
+			"A few more creatures like you, and the cellblock might just feel like a dream..",
+			"It's tempting to just.. lie beside you, for hours.. But I have to make sure the nearby floors are as safe as they can be.",
+			"What was I doing before this? Right.. Honestly, with distractions shaped like you, I could never complain..",
+			"Your voice is so damn hot... Have you passed out already? No worries, I have a feeling I'll be saying that much more often now..",
+			"You've really caught my attention, you know..",
+			"If.. I'm not your type, I'll find someone just for you.",
+			"I'll have to make it up to you later..",
 		])+"[/say]")
 
 		addMessage("{npc.name} can now be found around the cellblock.")
