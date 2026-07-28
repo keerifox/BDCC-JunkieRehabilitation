@@ -270,8 +270,8 @@ func encounter_run():
 		else:
 			saynn( RNG.pick([
 				"Weakened after the fight, {npc.name} falls onto {npc.his} spine, slipping into slumber.",
-				"There is no stamina left in {npc.name} to resist, and {npc.he} {npc.youVerb('collapse')} on {npc.his} side, beside you.",
-				"No more words leave {npc.nameS} mouth. For a brief moment, {npc.he} {npc.youVerb('stare')} at you with an alert expression, then.. {npc.youVerb('doze')} off.",
+				"There is no stamina left in {npc.name} to resist, and {npc.he} {npc.verb('collapse')} on {npc.his} side, beside you.",
+				"No more words leave {npc.nameS} mouth. For a brief moment, {npc.he} {npc.verb('stare')} at you with an alert expression, then.. {npc.verb('doze')} off.",
 				"Lacking strength to defy you, {npc.name} flops on {npc.his} back, closely following your movements for a few seconds, before inevitably falling asleep.",
 			]) )
 
