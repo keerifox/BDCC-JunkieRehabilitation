@@ -282,8 +282,8 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 				])
 			],
 			requirementsPair = [
-				[],
-				["hasAnus"],
+				["pcHasAnus"],
+				["inmateHasAnus"],
 			],
 		},
 		{
@@ -617,7 +617,7 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 								+ (
 										"through a ring gag that's difficult to take off"
 									if( inmateLikesBondage && RNG.chance(70) )
-									else "as the two of {npc.his} wrists are held firmly with just one paw of a larger critter"
+									else "as both of {npc.his} wrists are held firmly with just one paw of a larger critter"
 								)
 							),
 							( 0.0 if(inmateIsDommy) else 1.0 ),
@@ -716,6 +716,10 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 						],
 					])
 				])
+			],
+			requirementsPair = [
+				["pcHasAnus"],
+				["inmateHasAnus"],
 			],
 		},
 		{
@@ -840,14 +844,19 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 					"feeling the heat of another critter's pussy against {npc.hers}",
 					"helplessly squirming beneath another creature as it needily rubs their kitty against {npc.hers}",
 				]),
-			}[pcPreferredSubbyType]
+			}[pcPreferredSubbyType],
+			requirements = ["pcHasVagina", "inmateHasVagina"],
 		},
 		{
 			fetish = Fetish.UnconsciousSex,
 			interestInWhat = {
 				dom = RNG.pick([
 					(
-							( "slowly but needily fucking a sleeping critter that "+ RNG.pick(["hesitantly", "indulgently", "reluctantly"]) +" offered themselves the day before" )
+							(
+									"slowly but needily fucking a sleeping critter that "
+								+ RNG.pick(["hesitantly", "indulgently", "reluctantly"])
+								+ " offered themselves the day before"
+							)
 						if(inmateLikesPenetratingOthers)
 						else "selfishly fondling and tonguing through sensitive areas of a sleeping critter"
 					),
@@ -928,11 +937,15 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 				])
 			],
 			requirementsPair = [
-				[],
-				["hasVagina"],
+				["pcHasVagina"],
+				["inmateHasVagina"],
 			],
 		},
 	]
+
+	var savedSkillsHolder:SkillsHolder = SkillsHolder.new()
+	if(GM.main.DrugDenRun != null):
+		savedSkillsHolder.loadData(GM.main.DrugDenRun.savedSkillsData)
 
 	for changeData in potentialFetishChangesIncludingIneffective:
 		var fetishPair:Array = []
@@ -959,11 +972,19 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 			)
 
 			for requirementKey in requirements:
-				if(requirementKey == "hasAnus"):
+				if(requirementKey == "pcHasAnus"):
+					if( !GM.pc.hasAnus() ):
+						hasUnmetRequirements = true
+						break
+				elif(requirementKey == "pcHasVagina"):
+					if( !GM.pc.hasVagina() ):
+						hasUnmetRequirements = true
+						break
+				elif(requirementKey == "inmateHasAnus"):
 					if( !inmateChar.hasAnus() ):
 						hasUnmetRequirements = true
 						break
-				elif(requirementKey == "hasVagina"):
+				elif(requirementKey == "inmateHasVagina"):
 					if( !inmateChar.hasVagina() ):
 						hasUnmetRequirements = true
 						break
@@ -982,9 +1003,16 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 			var doesPlayerCharLikePairedFetishAtLeastSlightly:bool = (pcValue >= 0.125)
 
 			if(!doesPlayerCharLikePairedFetishAtLeastSlightly):
-				continue
+				var isPlayerCharNeutralToFetish = ( (pcValue > -0.075) && (pcValue < 0.075) )
 
-			var probability:float = (pcValue - 0.15)
+				if(isPlayerCharNeutralToFetish):
+					pcValue = sideEffects_getPlayerCharEstimateInterestForFetish(fetishPaired, savedSkillsHolder)
+					doesPlayerCharLikePairedFetishAtLeastSlightly = (pcValue >= 0.125)
+
+				if(!doesPlayerCharLikePairedFetishAtLeastSlightly):
+					continue
+
+			var probability:float = pcValue
 
 			var valueBefore:float = inmateFetishHolder.getFetishValue(fetish)
 			var valueAfter:float = clamp( (valueBefore + valueAdd), -1.0, 1.0 )
@@ -1004,7 +1032,7 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 
 			potentialFetishChanges.append([changeDataPublic, probability])
 
-	if( potentialFetishChanges.size() == 0 ):
+	if( ( potentialFetishChanges.size() == 0 ) || RNG.chance(1) ):
 		potentialFetishChanges.append([
 			{
 				fetish = Fetish.Exhibitionism,
@@ -1015,7 +1043,7 @@ func sideEffects_getPotentialFetishChanges(inmateChar:BaseCharacter, valueAdd:fl
 					"never having any clothes on",
 				]),
 			},
-			1.0
+			FetishInterest.SlightlyLikes
 		])
 
 	return potentialFetishChanges
@@ -1030,6 +1058,83 @@ func sideEffects_getIncompleteSpeciesFullName(species: Array) -> String:
 		return "Critter"
 
 	return specie.getVisibleName()
+
+# Rough estimation of fetishes relevant to PC, only used for fetishes marked as indifferent
+func sideEffects_getPlayerCharEstimateInterestForFetish(fetish:String, savedSkillsHolder:SkillsHolder) -> float:
+	var valueEstimate:float = 0.0
+
+	var pcPersonality = null
+	var pcPersonalityMeanScore:float = 0.0
+	var pcIsMean:bool = false
+	var pcPersonalitySubbyScore:float = 0.0
+	var pcIsDommy:bool = false
+
+	var isPersonalityDataRequired:bool = ( fetish in [Fetish.FeetplayReceiving] )
+
+	if(isPersonalityDataRequired):
+		pcPersonality = GM.pc.getPersonality()
+		pcPersonalityMeanScore = pcPersonality.personalityScoreMax({ PersonalityStat.Mean: 1.0 })
+		pcIsMean = (pcPersonalityMeanScore > 0.4)
+		pcPersonalitySubbyScore = pcPersonality.personalityScoreMax({ PersonalityStat.Subby: 1.0 })
+		pcIsDommy = pcPersonalitySubbyScore < -0.4
+
+	if( fetish in [Fetish.AnalSexGiving, Fetish.VaginalSexGiving] ):
+		if( savedSkillsHolder.hasPerk(Perk.BreedCumProduction) || ( ( savedSkillsHolder.getSkill(Skill.Breeder) != null ) && savedSkillsHolder.getSkill(Skill.Breeder).getLevel() >= 20 ) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif( fetish in [Fetish.AnalSexReceiving, Fetish.VaginalSexReceiving] ):
+		if( savedSkillsHolder.hasPerk(Perk.CumSloppySeconds) || ( ( savedSkillsHolder.getSkill(Skill.CumLover) != null ) && savedSkillsHolder.getSkill(Skill.CumLover).getLevel() >= 20 ) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.Bodywritings):
+		if( savedSkillsHolder.hasPerk(Perk.BDSMTallyMarks) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.Breeding):
+		if( savedSkillsHolder.hasPerk(Perk.BreedCumInflationHeat) || savedSkillsHolder.hasPerk(Perk.BreedRapidConception) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.BeingBred):
+		if( savedSkillsHolder.hasPerk(Perk.FertilityBroodmother) || ( ( savedSkillsHolder.getSkill(Skill.Fertility) != null ) && savedSkillsHolder.getSkill(Skill.Fertility).getLevel() >= 20 ) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.FeetplayGiving):
+		if( ( GlobalRegistry.getModule("ArticaModule") != null ) && GlobalRegistry.getModule("ArticaModule").isVerySlut() ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.FeetplayReceiving):
+		if(!pcIsDommy && !pcIsMean):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.HypnosisHypnotist):
+		if( savedSkillsHolder.hasPerk(Perk.HypnosisAmateurHypnotist) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.HypnosisSubject):
+		if( savedSkillsHolder.hasPerk(Perk.HypnosisKeywordsDrawback) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.Lactation):
+		if( savedSkillsHolder.hasPerk(Perk.MilkFasterProduction) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.OralSexReceiving):
+		valueEstimate = FetishInterest.SlightlyLikes
+		return valueEstimate
+	elif(fetish == Fetish.OralSexGiving):
+		if( savedSkillsHolder.hasPerk(Perk.CumBreath) || savedSkillsHolder.hasPerk(Perk.CumSwallower) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.Rigging):
+		if( savedSkillsHolder.hasPerk(Perk.BDSMRigger) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+	elif(fetish == Fetish.Bondage):
+		if( savedSkillsHolder.hasPerk(Perk.BDSMBondageSlut) ):
+			valueEstimate = FetishInterest.SlightlyLikes
+			return valueEstimate
+
+	return valueEstimate
 
 func sideEffects_getFetishVerb(theValue:float) -> String:
 	if(theValue <= -0.875):
