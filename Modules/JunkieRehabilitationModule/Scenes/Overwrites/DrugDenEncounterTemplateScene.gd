@@ -1738,7 +1738,7 @@ func encounter_run():
 			if(sceneID == "DrugDenEncounterBossScene"):
 				possibleDialogueLines.append_array([
 					"Whore. You don't deserve even a fraction of this lab.. What are y-",
-					"You think you got this all figured out? My thugs will- The fuck are yo..",
+					"You think you got this all figured out? My thugs will- The fuck are you-..",
 					"You're still an amateur that would waste this state-of-the-art equipment to make a fucking painkil- Get your dirty hands off me! Mfhhsfh-"
 				])
 			else:
