@@ -74,33 +74,33 @@ func getCustomNameChance_max() -> float:
 
 func getCustomNames() -> Array:
 	return [
-		"Aaren", "Acorn", "Adair", "Aesther", "Aevari", "Aguilar", "Aiden", "Aki", "Akhona", "Akseli", "Albion", "Alexi", "Almer", "Almond", "Alvi", RNG.pick(["Amari", "Amir", "Amory"]), "Ander", "Aquila", "Archer", "Ardor", "Argyris", RNG.pick(["Aren", "Ari", "Aries", "Arin"]), "Arkian", "Arwyn", "Asher", "Aspen", RNG.pick(["Astra", "Astrid"]), "Auburn", "Audyn", "Augur", RNG.pick(["Aura", "Auren"]), "Averil", "Avion", "Axel", "Ayrie",
+		"Aaren", "Acorn", "Adair", "Aesther", "Aevari", "Aguilar", "Aiden", "Aki", "Akhona", "Akseli", "Albion", "Alexi", "Almer", "Almond", "Alvi", RNG.pick(["Amari", "Amir", "Amory"]), "Ander", "Aquila", "Archer", "Ardor", "Argyris", RNG.pick(["Aren", "Ari", "Aries", "Arin"]), "Arkian", "Arwyn", "Asahi", "Asher", "Aspen", RNG.pick(["Astra", "Astrid"]), "Auburn", "Audyn", "Augur", RNG.pick(["Aura", "Auren"]), "Averil", "Avion", "Awais", "Axel", "Ayrie",
 		#
 		"Bailey", "Baltoro", "Bastien", "Bergen", "Bevy", "Birdie", "Biscuit", "Blaire", "Blankie", "Bliss", "Bodhi", "Brisken", "Brynn", "Bug", "Butch", "Buttercup",
 		#
-		RNG.pick(["Caelan", "Caelum"]), "Caine", "Cairo", "Calem", "Camryn", "Canvas", "Canyon", "Cappu", "Capri", "Carmilla", "Casimir", "Caspian", "Castano", "Castiel", "Catnip", "Ceno", RNG.pick(["Ceri", "Cerulean", "Cerys"]), "Cephei", "Ceylan", "Chains", "Charli", "Charon", "Charys", "Charreth", "Cherko", "Cheshyre", "Chiaki", "Chijou", "Chirayu", "Chisato", "Chisel", "Chitter", "Chloe", RNG.pick(["Choccy", "Chouquette"]), "Cider", RNG.pick(["Cieran", "Cieron", "Ciel"]), "Cimeres", "Cinder", RNG.pick(["Cinnamon", "Cinny"]), RNG.pick(["Citrine", "Citrus"]), "Clam", "Claw", "Cloud", "Clover", "Cocoa", "Coda", "Colt", "Cooper", "Corin", "Corvus", "Crayon", "Cris", "Cross",
+		RNG.pick(["Caelan", "Caelum"]), "Caine", "Cairo", "Calem", "Camryn", "Canvas", "Canyon", "Cappu", "Capri", "Carmilla", "Casimir", "Caspian", "Castano", "Castiel", "Catnip", RNG.pick(["Ceno", "Cenyu"]), RNG.pick(["Ceri", "Cerulean", "Cerys"]), "Cephei", "Ceylan", "Chains", "Charli", "Charon", "Charys", "Charreth", "Cherko", "Cheshyre", RNG.pick(["Chiaki", "Chiara"]), "Chijou", "Chirayu", "Chisato", "Chisel", "Chitter", "Chloe", RNG.pick(["Choccy", "Chouquette"]), "Cider", RNG.pick(["Cieran", "Cieron", "Ciel"]), "Cimeres", "Cinder", RNG.pick(["Cinnamon", "Cinny"]), RNG.pick(["Citrine", "Citrus"]), "Clam", "Claw", "Cloud", "Clover", "Cocoa", "Coda", "Colt", "Cooper", "Corin", "Corvus", "Crayon", "Cris", "Cross",
 		#
-		"Daedric", "Daichi", "Daki", "Dash", "Davide", "Davin", "Daylin", "Delaine", "Delta", "Delwyn", "Demure", "Devi", "Dexie", "Dice", "Drifter", "Dune", "Duran", RNG.pick(["Dusker", "Dusky"]), "Dwyn",
+		"Daedric", "Daichi", "Daki", "Dash", "Davide", "Davin", "Daylin", "Delaine", "Delta", "Delwyn", "Demure", "Devi", "Dexie", "Dice", "Dijon", "Domino", "Drifter", "Dune", "Duran", RNG.pick(["Dusker", "Dusky"]), "Dwyn",
 		#
 		"Echo", "Eden", "Eilian", RNG.pick(["Elie", "Ellie", "Elouiselle"]), "Elixir", "Elwyn", "Elys", "Ember", "Emlyn", "Emrys", "Encherie", "Enfys", "Enora", "Erlea", "Erryn", "Esen", "Essou", "Everly", "Ezri",
 		#
-		"Fable", "Fang", "Farren", "Feather", "Fenris", "Ferelith", "Fernley", "Fero", "Feryl", "Fidget", RNG.pick(["Finchie", "Finley", "Finn"]), "Fish", "Fives", "Flake", "Flann", "Fleur", "Flint", "Florian", "Flurry", "Fragile", "Freckles",
+		"Fable", "Fang", "Farren", "Feather", "Fenris", "Ferelith", "Fernley", "Fero", "Feryl", "Fidget", RNG.pick(["Finchie", "Finley", "Finn"]), "Fish", "Fives", "Flake", "Flann", "Fleur", "Flint", "Florian", "Flurry", "Fragile", "Freckles", "Freya",
 		#
 		"Gabii", "Gage", "Gaia", "Gareth", "Garnet", "Gavyn", "Glade", "Glenne", RNG.pick(["Goro", "Gorou"]), "Gwyn",
 		#
-		"Halcyon", "Harlyn", "Haru", "Haskell", "Heathen", "Heijou", RNG.pick(["Hiccup", "Hickori", "Hikaru"]), "Hinata", "Hiro", "Howl", "Hudson",
+		"Halcyon", "Harlyn", "Haru", "Haskell", "Heathen", "Heijou", RNG.pick(["Hiccup", "Hickori", "Hikaru"]), RNG.pick(["Hina", "Hinata"]), "Hiro", "Howl", "Hudson",
 		#
 		"Ianthe", "Ichi", "Idelwyn", "Idris", "Imogen", "Imre", "Innes", "Inkie", "Isabeau", "Iseul", "Izumi",
 		#
 		"Jacey", "Jacket", "Jade", RNG.pick(["Jaelyn", "Jaetyn"]), "Jago", RNG.pick(["Jaiden", "Jayden"]), "Jaspen", "Javi", "Jaxie", "Jaycee", "Jelle", "Jett", "Jileath", "Junichi", "Juniper", "Juno", "Jyrki",
 		#
-		RNG.pick(["Kade", "Kaede", "Kaida"]), "Kaegan", "Kaenori", "Kagi", "Kahvi", RNG.pick(["Kai", "Kailath"]), RNG.pick(["Kaja", "Kajuu"]), RNG.pick(["Kale", "Kali"]), RNG.pick(["Kaori", "Kaoru"]), "Karkittu", "Karni", "Karsyn", "Kathan", "Kavukatt", RNG.pick(["Kavian", "Kavun"]), "Kaya", "Kayden", RNG.pick(["Kaze", "Kazeiu"]), RNG.pick(["Kei", "Keiki"]), RNG.pick(["Keita", "Kenta"]), "Kelby", "Kiawi", "Kiba", "Kieran", "Kigu", "Kijana", "Kimbra", RNG.pick(["Kimi", "Kimmie"]), "Kit", "Kiwen", "Kiyoshi", "Koen", "Kort", "Kosse", "Kouji", "Koutsouri", "Kreski", "Kritta", "Kuriko", "Kutto", RNG.pick(["Kyra", "Kyro"]), RNG.pick(["Kyubi", "Kyuu"]),
+		RNG.pick(["Kade", "Kaede", "Kaida"]), "Kaegan", "Kaenori", "Kagi", RNG.pick(["Kahli", "Kahvi"]), RNG.pick(["Kai", "Kailath"]), RNG.pick(["Kaja", "Kajuu"]), RNG.pick(["Kale", "Kali"]), RNG.pick(["Kaori", "Kaoru"]), "Karkittu", "Karni", "Karsyn", "Kathan", "Kavukatt", RNG.pick(["Kavian", "Kavun"]), "Kaya", "Kayden", RNG.pick(["Kaze", "Kazeiu"]), RNG.pick(["Kei", "Keiki"]), RNG.pick(["Keita", "Kenta"]), "Kelby", "Kevlar", "Kiawi", "Kiba", "Kieran", "Kigu", "Kijana", "Kimbra", RNG.pick(["Kimi", "Kimmie"]), "Kira", "Kit", "Kiwen", "Kiyoshi", "Koen", "Kort", "Kosse", "Kouji", "Koutsouri", "Kreski", "Kritta", "Kuriko", "Kutto", "Kyaji", RNG.pick(["Kyra", "Kyro"]), RNG.pick(["Kyubi", "Kyuu"]),
 		#
-		"Lace", "Lain", "Laith", RNG.pick(["Lani", "Lanjus"]), "Lapachi", "Lapis", "Lappy", "Lars", "Laufei", RNG.pick(["Lavender", "Lavi"]), "Layne", RNG.pick(["Lia", "Liv"]), RNG.pick(["Lexi", "Lexie", "Lexis"]), "Licky", RNG.pick(["Lin", "Linh"]), "Locke", "Lofie", "Loomy", "Lopi", RNG.pick(["Loreen", "Lorn"]), "Lorenz", "Lotte", RNG.pick(["Luca", "Luka"]), "Lucero", "Luna", "Lucky", RNG.pick(["Lumi", "Lumine"]), "Lycori",
+		"Lace", "Lain", "Laith", RNG.pick(["Lani", "Lanjus"]), "Lapachi", "Lapis", "Lappy", "Lars", "Laufei", "Lautaro", RNG.pick(["Lavender", "Lavi"]), "Layne", RNG.pick(["Lia", "Liju", "Liv"]), RNG.pick(["Lexi", "Lexie", "Lexis"]), "Licky", RNG.pick(["Lin", "Linh"]), "Locke", "Lofie", "Loomy", "Lopi", RNG.pick(["Loreen", "Lorn"]), "Lorenz", "Lotte", RNG.pick(["Luca", "Luka"]), "Lucero", "Luna", "Lucky", RNG.pick(["Lumi", "Lumine"]), "Lycori", "Lyorin",
 		#
-		RNG.pick(["Macchiato", "Maci"]), "Maia", RNG.pick(["Mako", "Makoto"]), "Malachi", "Mamoru", "Mana", "Mango", "Maple", "Marlow", "Marmutt", RNG.pick(["Mars", "Marv"]), "Mayhem", "Meph", "Meru", "Mesa", "Micha", "Midnite", "Mika", "Milky", "Mina", RNG.pick(["Mintea", "Minxie", "Mircea"]), "Miyu", "Mochi", "Moki", "Moon", "Moufette", "Moulton", "Muri",
+		RNG.pick(["Macchiato", "Maci"]), "Maelle", "Maia", RNG.pick(["Mako", "Makoto"]), "Malachi", "Mamoru", "Mana", "Mango", "Maple", "Marlow", "Marmutt", RNG.pick(["Mars", "Marv"]), "Mayhem", "Meph", "Meru", "Mesa", "Mewlan", "Micha", "Midnite", "Mika", "Milky", "Mina", RNG.pick(["Mintea", "Minxie", "Mircea"]), "Miyu", "Mochi", "Moki", "Moon", "Moufette", "Moulton", "Muri",
 		#
-		"Nathalie", "Neon", "Nero", "Niko", "Nisha", "Nixx", "Nomad", RNG.pick(["Norica", "Norii"]), "Noxli", "Nuri",
+		"Nathalie", "Neon", "Nero", "Niko", "Nisha", "Nixx", "Nomad", "Noor", RNG.pick(["Norica", "Norii"]), "Noxli", RNG.pick(["Nureli", "Nuri"]), "Nyaal",
 		#
 		"Oasis", "Oddball", "Onyx", "Oreo",
 		#
@@ -108,11 +108,11 @@ func getCustomNames() -> Array:
 		#
 		"Pancakes", RNG.pick(["Pasqual", "Pasqui"]), "Pastel", "Pastry", "Patch", "Pawnam", "Peaches", "Pidge", "Plush", RNG.pick(["Pockets", "Pocky"]), "Powder", "Puck",
 		#
-		"Rail", RNG.pick(["Raine", "Rainy"]), "Raewyn", "Rania", "Rascal", "Rasmus", RNG.pick(["Rei", "Reiko"]), "Remedy", "Remi", "Renko", "Renni", "Requiem", "Rhiens", "Rhys", "Ribbons", RNG.pick(["Rikkari", "Rikki"]), RNG.pick(["Rinneth", "Rinny"]), "River", "Riwi", "Rixen", "Roche", "Rook", "Rouge", "Rowan", "Roxali", "Rune", RNG.pick(["Ryuichi", "Ryuko"]),
+		"Rail", RNG.pick(["Raine", "Rainy"]), "Raewyn", "Rania", "Rascal", "Rasmus", RNG.pick(["Rei", "Reiko"]), "Remedy", "Remi", "Renko", "Renni", "Requiem", "Rhiens", "Rhys", "Ribbons", RNG.pick(["Rikkari", "Rikki"]), RNG.pick(["Rin", "Rinneth", "Rinny"]), "River", "Riwi", "Rixen", "Roche", "Rook", "Rouge", "Rowan", "Roxali", "Rune", RNG.pick(["Ryuichi", "Ryuko"]),
 		#
-		"Sabine", "Sable", RNG.pick(["Saeko", "Saika", "Seiko", "Senko"]), "Salem", "Sammi", RNG.pick(["Satoru", "Satouji"]), "Savieon", "Scharfes", "Scruffy", "Seelie", "Seiryu", "Selby", "Seraph", "Serra", "Seti", "Sevin", RNG.pick(["Shae", "Shayhun"]), "Shion", "Shin", "Shiro", "Shiv", "Shonryu", "Sierra", "Siobhan", "Slug", "Slushie", "Smore", "Snuffie", "Soapy", "Sobel", RNG.pick(["Sock", "Socks"]), "Somni", "Song", RNG.pick(["Sorin", "Souren"]), "Soujun", "Soweli", "Sparkle", "Spike", "Splash", "Squishy", "Stiletto", "Stoibs", "Stoichi", "Styx", "Sunny", "Suwi", "Sven", "Syd", "Sylvie", "Syrup",
+		"Sabine", "Sable", RNG.pick(["Saeko", "Sai", "Saika"]), "Salem", "Sammi", RNG.pick(["Satoru", "Satouji"]), "Savieon", "Scharfes", "Scruffy", "Seelie", RNG.pick(["Seiko", "Senko", "Senri"]), "Seiryu", "Selby", "Seraph", "Serra", "Seti", "Sevin", RNG.pick(["Shae", "Shayhun"]), "Shion", "Shin", "Shiro", "Shiv", "Shonryu", "Shuki", "Sierra", "Siobhan", "Slug", "Slushie", "Smore", "Snuffie", "Soapy", "Sobel", RNG.pick(["Sock", "Socks"]), "Somni", "Song", RNG.pick(["Sorin", "Souren"]), "Soujun", "Soweli", "Sparkle", "Spike", "Splash", "Squishy", "Stiletto", "Stoibs", "Stoichi", "Styx", "Sunny", "Suwi", "Sven", "Syd", "Sylvie", "Syrup",
 		#
-		"Tales", RNG.pick(["Talon", "Talyn"]), "Tangerine", "Tangle", "Taro", "Tawreh", "Tayliah", "Thiago", "Thistle", RNG.pick(["Thorn", "Thorne"]), "Tidal", "Toffee", "Touki", "Treat", "Twine",
+		"Tales", "Tally", RNG.pick(["Talon", "Talyn"]), "Tangerine", "Tangle", "Taro", "Tawreh", "Tayliah", "Tayven", "Thiago", "Thistle", RNG.pick(["Thorn", "Thorne"]), "Tidal", "Toffee", RNG.pick(["Toki", "Touki"]), "Treat", "Twine",
 		#
 		"Uno",
 		#
@@ -122,7 +122,7 @@ func getCustomNames() -> Array:
 		#
 		"Xanthe", "Xenia", "Xepher", "Xiang", "Xiao",
 		#
-		"Yachiru", "Yaei", "Yamato", "Yao", "Ying", RNG.pick(["Yukari", "Yuki", "Yuuki"]), "Yumekito",
+		"Yachiru", "Yaei", "Yamato", "Yao", "Ying", "Yosuke", RNG.pick(["Yukari", "Yuki", "Yuuki"]), "Yumekito",
 		#
 		"Zaiden", "Zaire", "Zenith", "Zephyr", "Zero", "Zippy", RNG.pick(["Zoe", "Zoey"]),
 	]
